@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Scientific portfolio of Constanza Vega Olivares, a PhD candidate in aquatic ecology, ecological modelling, and multiple stressors in food webs." />
+  <title>Constanza Vega Olivares — Aquatic Ecology & Ecological Modelling</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #152c32;
+      --muted: #5b6e70;
+      --paper: #f8f6ee;
+      --sand: #ece7d6;
+      --water: #cde8e5;
+      --aqua: #3c8f8a;
+      --deep: #17666a;
+      --algae: #55783e;
+      --sun: #e7b956;
+      --line: rgba(21, 44, 50, .14);
+      --shadow: 0 18px 40px rgba(22, 60, 61, .10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "DM Sans", system-ui, sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--sun); outline-offset: 4px; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid transparent;
+      background: rgba(248, 246, 238, .88);
+      backdrop-filter: blur(14px);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-family: "Fraunces", Georgia, serif; font-size: 1.18rem; font-weight: 700; letter-spacing: -.03em; }
+    .brand span { color: var(--aqua); }
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: .9rem; font-weight: 600; }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover { color: var(--deep); }
+    .nav-links .nav-cta { color: white; background: var(--deep); padding: 9px 14px; border-radius: 999px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 78px;
+      background: linear-gradient(135deg, #f8f6ee 0%, #edf3ea 48%, #d6eeea 100%);
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+      pointer-events: none;
+    }
+    .hero::before { width: 520px; height: 520px; right: -190px; top: -210px; background: rgba(60, 143, 138, .13); }
+    .hero::after { width: 330px; height: 330px; left: -145px; bottom: -210px; background: rgba(231, 185, 86, .13); }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.22fr .78fr; align-items: center; gap: 56px; }
+    .eyebrow, .section-kicker {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-family: "DM Mono", monospace; font-size: .74rem; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--deep);
+    }
+    .eyebrow::before, .section-kicker::before { content: ""; width: 25px; height: 1px; background: currentColor; }
+    .hero-affiliation { margin: 10px 0 0; color: #547173; font-size: .86rem; font-weight: 600; }
+    .hero-affiliation a { color: var(--deep); text-decoration: underline; text-decoration-color: rgba(23, 102, 106, .38); text-underline-offset: 3px; }
+    .hero-affiliation a:hover { text-decoration-color: var(--deep); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 760px; margin: 16px 0 23px; font-family: "Fraunces", Georgia, serif; font-size: clamp(2.75rem, 6vw, 5.2rem); line-height: .98; letter-spacing: -.058em; }
+    h1 em { color: var(--deep); font-style: italic; }
+    .hero-copy { max-width: 650px; color: #3e5657; font-size: 1.15rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 18px; border: 1px solid var(--deep); border-radius: 999px; font-weight: 700; font-size: .93rem; transition: transform .2s, background .2s, color .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--deep); color: white; }
+    .button-primary:hover { background: #0f5558; }
+    .button-secondary { color: var(--deep); background: rgba(255,255,255,.42); }
+    .button-secondary:hover { background: white; }
+
+    .model-card { position: relative; min-height: 390px; border: 1px solid rgba(21, 102, 106, .2); border-radius: 24px; overflow: hidden; background: #163f45; box-shadow: var(--shadow); }
+    .model-card-header { position: relative; z-index: 2; display: flex; justify-content: space-between; padding: 17px 20px; color: #d7efeb; font-family: "DM Mono", monospace; font-size: .72rem; }
+    .model-card-header span:last-child { color: #91d3c9; }
+    .node { position: absolute; z-index: 2; display: grid; place-items: center; width: 62px; height: 62px; border: 1px solid rgba(255,255,255,.45); border-radius: 50%; color: white; font-family: "DM Mono", monospace; font-size: .65rem; text-align: center; line-height: 1.15; box-shadow: 0 0 0 9px rgba(255,255,255,.04); }
+    .node.a { left: 13%; top: 32%; background: #55783e; }
+    .node.b { right: 16%; top: 23%; background: #3c8f8a; }
+    .node.c { left: 39%; bottom: 17%; background: #d99d36; }
+    .node.d { right: 8%; bottom: 22%; background: #376c8a; }
+    .node.e { left: 5%; bottom: 12%; background: #8c5d55; }
+    .link { position: absolute; z-index: 1; height: 1px; background: rgba(218, 241, 235, .62); transform-origin: left center; }
+    .l1 { width: 158px; left: 25%; top: 43%; transform: rotate(-15deg); }
+    .l2 { width: 119px; left: 26%; top: 48%; transform: rotate(47deg); }
+    .l3 { width: 152px; left: 53%; top: 61%; transform: rotate(-17deg); }
+    .l4 { width: 130px; left: 19%; top: 72%; transform: rotate(-17deg); }
+    .l5 { width: 103px; left: 61%; top: 45%; transform: rotate(83deg); }
+    .stress-line { position: absolute; right: -15px; top: 81px; bottom: 0; width: 12px; background: linear-gradient(#e7b956 0 31%, #dd7154 31% 64%, #aa5053 64%); opacity: .95; }
+    .card-caption { position: absolute; z-index: 2; left: 20px; bottom: 17px; color: #cce9e5; font-size: .76rem; }
+    .card-caption strong { display: block; color: white; font-family: "Fraunces", Georgia, serif; font-size: 1.1rem; font-weight: 600; }
+
+    .identity-bar { background: var(--deep); color: #e9f7f2; }
+    .identity-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .identity-item { padding: 28px 28px 29px; border-right: 1px solid rgba(255,255,255,.16); }
+    .identity-item:last-child { border-right: 0; }
+    .identity-label { display: block; margin-bottom: 6px; color: #a2d4cc; font-family: "DM Mono", monospace; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; }
+    .identity-item strong { font-size: .98rem; }
+
+    section { padding: 100px 0; }
+    .section-head { max-width: 740px; margin-bottom: 45px; }
+    h2 { margin: 13px 0 14px; font-family: "Fraunces", Georgia, serif; font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: 1.05; letter-spacing: -.045em; }
+    .section-intro { max-width: 650px; color: var(--muted); font-size: 1.05rem; }
+
+    .research { background: #fffdf8; }
+    .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .research-card { min-height: 275px; padding: 27px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); transition: transform .2s, box-shadow .2s; }
+    .research-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .number { color: var(--aqua); font-family: "DM Mono", monospace; font-size: .78rem; }
+    h3 { margin: 34px 0 12px; font-family: "Fraunces", Georgia, serif; font-size: 1.55rem; line-height: 1.08; letter-spacing: -.025em; }
+    .research-card p { margin-bottom: 0; color: var(--muted); font-size: .94rem; }
+
+    .approach-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 82px; align-items: start; }
+    .approach-statement { color: #365354; font-family: "Fraunces", Georgia, serif; font-size: clamp(1.55rem, 3vw, 2.3rem); line-height: 1.25; letter-spacing: -.035em; }
+    .approach-statement em { color: var(--algae); }
+    .method-list { border-top: 1px solid var(--line); }
+    .method { display: grid; grid-template-columns: 60px 1fr; gap: 16px; padding: 21px 0; border-bottom: 1px solid var(--line); }
+    .method-code { color: var(--aqua); font-family: "DM Mono", monospace; font-size: .78rem; padding-top: 3px; }
+    .method h3 { margin: 0 0 4px; font-family: "DM Sans", sans-serif; font-size: 1rem; letter-spacing: 0; }
+    .method p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+    .work { background: var(--sand); }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project { display: flex; flex-direction: column; min-height: 310px; padding: 28px; border-radius: 16px; background: #fffdf8; border: 1px solid rgba(21,44,50,.08); }
+    .project:nth-child(2) { background: #e0efeb; }
+    .project-meta { color: var(--aqua); font-family: "DM Mono", monospace; font-size: .73rem; letter-spacing: .04em; text-transform: uppercase; }
+    .project h3 { margin: 20px 0 11px; font-size: 1.75rem; }
+    .project p { color: var(--muted); }
+    .project-link { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: var(--deep); font-weight: 700; font-size: .92rem; }
+    .project-link:hover { text-decoration: underline; }
+
+    .contact { padding: 88px 0; background: #173e43; color: white; }
+    .contact-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 54px; align-items: end; }
+    .contact .section-kicker { color: #92d1c7; }
+    .contact h2 { margin-bottom: 0; color: #f5faf5; }
+    .contact-text { color: #c4dcda; font-size: 1.05rem; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .contact .button-secondary { border-color: rgba(255,255,255,.48); color: white; background: transparent; }
+    .contact .button-secondary:hover { color: var(--deep); background: white; }
+    .orcid-icon { width: 15px; height: 15px; border-radius: 50%; background: #a6ce39; color: #173e43; display: inline-grid; place-items: center; font-size: 9px; font-weight: 800; font-family: Arial, sans-serif; }
+    .github-icon { width: 17px; height: 17px; display: inline-block; flex: 0 0 17px; color: currentColor; }
+    footer { padding: 22px 0; background: #112f33; color: #abc5c1; font-size: .82rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+    @media (max-width: 800px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { padding: 73px 0 58px; }
+      .hero-grid, .approach-grid, .contact-grid { grid-template-columns: 1fr; gap: 38px; }
+      .model-card { min-height: 330px; max-width: 510px; width: 100%; }
+      .research-grid { grid-template-columns: 1fr; }
+      .identity-grid { grid-template-columns: 1fr; }
+      .identity-item { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.16); padding: 20px 0; }
+      .identity-item:last-child { border-bottom: 0; }
+      .project-grid { grid-template-columns: 1fr; }
+      section { padding: 72px 0; }
+    }
+    @media (max-width: 460px) {
+      .container { width: min(100% - 30px, 1120px); }
+      h1 { font-size: 2.7rem; }
+      .hero-copy { font-size: 1rem; }
+      .nav { min-height: 62px; }
+      .nav-links { gap: 9px; }
+      .nav-links .nav-cta { padding: 8px 11px; font-size: .82rem; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#top">Constanza Vega Olivares<span>.</span></a>
+      <div class="nav-links">
+        <a href="#research">Research</a>
+        <a href="#approach">Approach</a>
+        <a href="#work">Projects</a>
+        <a class="nav-cta" href="#contact">Get in touch</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">PhD candidate · University of Valencia</div>
+          <p class="hero-affiliation">Doctoral Candidate in the <a href="https://www.uantwerpen.be/en/projects/quantitative-extrapolation-ecotoxicology/" target="_blank" rel="noopener">QTOX Doctoral Network</a></p>
+          <h1>Understanding how <em>multiple stressors</em> reshape aquatic food webs.</h1>
+          <p class="hero-copy">I develop mechanistic ecological models to examine community-level responses to environmental change—linking species interactions, bioenergetics, and stressor dynamics in freshwater ecosystems.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#research">Explore my research <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="https://orcid.org/0000-0001-5679-0687" target="_blank" rel="me noopener">View ORCID <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="model-card" role="img" aria-label="Stylised ecological network representing a stressor-affected aquatic food web">
+          <div class="model-card-header"><span>community_model.jl</span><span>● running</span></div>
+          <span class="link l1"></span><span class="link l2"></span><span class="link l3"></span><span class="link l4"></span><span class="link l5"></span>
+          <div class="node a">Primary<br>producers</div>
+          <div class="node b">Grazers</div>
+          <div class="node c">Detritivores</div>
+          <div class="node d">Predators</div>
+          <div class="node e">Microbes</div>
+          <div class="stress-line" title="Environmental stress gradient"></div>
+          <div class="card-caption"><strong>Food-web dynamics</strong>Species interactions under environmental change</div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="identity-bar" aria-label="Research overview">
+      <div class="container identity-grid">
+        <div class="identity-item"><span class="identity-label">System</span><strong>Freshwater communities & food webs</strong></div>
+        <div class="identity-item"><span class="identity-label">Focus</span><strong>Interactive effects of multiple stressors</strong></div>
+        <div class="identity-item"><span class="identity-label">Toolkit</span><strong>Julia · mathematical models · data analysis</strong></div>
+      </div>
+    </aside>
+
+    <section id="research" class="research">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Research themes</div>
+          <h2>From environmental drivers to emergent community responses.</h2>
+          <p class="section-intro">My work asks how stressors combine, propagate through trophic interactions, and ultimately alter the structure, functioning, and stability of aquatic ecosystems.</p>
+        </div>
+        <div class="research-grid">
+          <article class="research-card">
+            <div class="number">01 / MULTIPLE STRESSORS</div>
+            <h3>Beyond single-driver effects</h3>
+            <p>Investigating how warming, organic pollutants, and other environmental pressures interact—additively, synergistically, or antagonistically—at the community level.</p>
+          </article>
+          <article class="research-card">
+            <div class="number">02 / FOOD-WEB DYNAMICS</div>
+            <h3>Interactions shape outcomes</h3>
+            <p>Using trophic networks to understand how direct effects on populations cascade across consumers, resources, and ecosystem processes.</p>
+          </article>
+          <article class="research-card">
+            <div class="number">03 / MECHANISTIC MODELLING</div>
+            <h3>Process-based prediction</h3>
+            <p>Building bioenergetic and dynamical models that make ecological assumptions explicit and generate testable predictions under novel conditions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="container approach-grid">
+        <div>
+          <div class="section-kicker">How I work</div>
+          <h2>Models as a laboratory for ecological complexity.</h2>
+          <p class="approach-statement">I combine ecological theory with computational methods to trace how <em>individual-level constraints</em> become food-web and community-level patterns.</p>
+        </div>
+        <div class="method-list">
+          <article class="method">
+            <div class="method-code">01</div>
+            <div><h3>Dynamic ecological models</h3><p>ODE-based simulations of population and trophic dynamics, informed by biological mechanisms and environmental dependencies.</p></div>
+          </article>
+          <article class="method">
+            <div class="method-code">02</div>
+            <div><h3>Julia scientific software</h3><p>Reproducible, performant modelling workflows in Julia for simulation, sensitivity analysis, and transparent research software.</p></div>
+          </article>
+          <article class="method">
+            <div class="method-code">03</div>
+            <div><h3>Empirical–theoretical integration</h3><p>Connecting model outputs with experimental and observational data to evaluate mechanisms and sharpen ecological inference.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="work">
+      <div class="container">
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-meta">PhD research · QTOX Doctoral Network</div>
+            <h3>Multiple stressors in aquatic communities</h3>
+            <p>Mechanistic simulations exploring how environmental stressors modify species performance, interaction strengths, and emergent food-web properties.</p>
+            <a class="project-link" href="https://www.uantwerpen.be/en/projects/quantitative-extrapolation-ecotoxicology/" target="_blank" rel="noopener">Learn about QTOX <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project">
+            <div class="project-meta">Open science · Julia</div>
+            <h3>Ecological modelling tools</h3>
+            <p>Developing transparent computational tools for building, analysing, and communicating complex ecological models and their uncertainty.</p>
+            <a class="project-link" href="https://github.com/cvegao/FoodWebs.jl" target="_blank" rel="noopener">View FoodWebs.jl <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container contact-grid">
+        <div>
+          <div class="section-kicker">Collaboration</div>
+          <h2>Interested in aquatic ecology, ecological networks, or modelling?</h2>
+        </div>
+        <div>
+          <p class="contact-text">I welcome conversations about freshwater ecosystems, multiple-stressor research, reproducible ecological modelling, and collaborative science.</p>
+          <div class="contact-links">
+            <a class="button button-secondary" href="mailto:constanza.vega@uv.es">Email me <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://orcid.org/0000-0001-5679-0687" target="_blank" rel="me noopener"><span class="orcid-icon" aria-hidden="true">iD</span> ORCID profile <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://github.com/cvegao" target="_blank" rel="me noopener" aria-label="Visit Constanza Vega Olivares on GitHub">
+              <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 4.87c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+              </svg>
+              GitHub profile <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Constanza Vega Olivares</span>
+      <span>PhD Candidate · University of Valencia · QTOX Doctoral Network</span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
